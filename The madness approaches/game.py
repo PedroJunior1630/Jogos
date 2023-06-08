@@ -75,6 +75,24 @@ def gameOver():
     print("GAME OVER!")
     linha(10,"=+=")
 
+def opcaoSe():
+    opcao1 = " "
+    while opcao1 != "A" or opcao1 != "B":
+        opcao1 = str(input("QUAL OPÇÃO DESEJA? [A/B]: ")).upper().strip()
+        if opcao1 == "A" or opcao1 == "B":
+            break
+
+def opcaoVerifica(a,b):
+    if opcaoSe() == "A":
+        escolha(a)
+    else:
+        escolha(b)
+
+#def condicaoSe():
+   #if opcaoSe() == "A":
+        # es
+   # elif opcaoSe() == "B":
+
 novaLinha()
 linha(50,"##")
 print("SEJA MUITO BEM VINDO AMANTE DA LOUCURA AO NOSSO JOGO! ESCOLHA,EXPLORE E MORRA! HAHAHHAHAA!")
@@ -164,7 +182,61 @@ while True:
         linha("=-=",20)
         print("OPÇÃO ERRADA! TENTE NOVAMENTE!")
         linha("=-=", 20)
+def ruaAvenida(opcaoavenida):
+        if opcaoavenida == "A":
+            escolha("VOCÊ CHEGA NO CEMITÉRIO DE MANCHESTER ÁS 07:15 E BATE SEU PONTO , A MANHÃ PARECE FRIA HOJE...")
+            tempo(2)
+            print("O JOGO ACABOU, OBRIGADO POR TESTAR A BETA! :D")
+            return opcaoavenida
+        else:
+            escolha("MAYWS ESTÁ ANDANDO E VÊ UMA LOJA COM UMA BANCADA DE JORNAIS NO POSTO DE GASOLINA...OPS! VOCÊ TEM £0,25 O QUE ACHA DE UM JORNAL?")
+            opcaoGame("COMPRAR JORNAL", "NÃO COMPRAR E IR LOGO...")
 
+def jornalCarona(opcaojc):
+     if opcaojc == "A":
+                escolha("O JORNAL VINHA COM ALGUMAS INFORMAÇÕES INRRELEVANTES, MAS A PRINCIPAL ERA SOBRE...")
+                tempo(2)
+                print("""
+                    [AQUI ENTRA UM JORNAL]
+                """)
+                escolha("MAYWS SE ENTRISTECE AO LER... PESADELOS AINDA-OS ASSOMBRA.. MAYWS SE DIRIGE AO TRABALHO...")
+                print("""
+                 [ flashback... alguma coisa tenebrosa]
+                """)
+     else:
+        escolha("SEU CHEFE PASSA PARA REABASTECER O TANQUE E O VÊ, ENTÃO LHE OFERECE UMA CARONA ATÉ O TRABALHO...")
+        print("""
+        [ AQUI ENTRA UM CARRO]
+        """)
+        opcaoGame("ACEITAR A CARONA","REJEITAR EDUCADAMENTE E IR A PÉ")
+        
+def caronaAceita(opcaocarona):
+    if opcaocarona == "A":
+        escolha("MAYWS ENTRA NO CARRO DE SEU CHEFE...")
+        tempo(2)
+        escolha("""
+        - Bom dia Mayws
+        > Bom dia 
+        - Que belo sexta, hoje a maxíma é de 10°C
+        > Sim.. Parece bom.
+        - Então...
+        - Como está a vida? Parece cansado...
+        > Vai normal.. hoje o turno é o mesmo?
+        - Sim, inclusive... teremos menos mortos hoje, afinal é uma sexta não?
+        > ...
+        - Brincadeiras a parte,mas Mayws....
+        - Você ainda sente falta dele?
+        - Sabe que somos amigos há muito tempo... Você precisa melhorar.. ver o valor da vida mesmo tendo acontecido aquilo.
+        > É, estou tentando que posso...
+        """)
+        print(" * CARRO PARANDO * ")
+        print("""
+        - Chegamos.. Poucos enterros hoje,o dia promete em, pronto?
+        > Sim, vamos...
+        """)
+    else:
+        escolha("")
+    
 cont = 0
 distancia = 1000 
 
@@ -181,6 +253,14 @@ while True:
         novaLinha()
         opcaoGame("IR PELA QUADRA PRINCIPAL DE CARRO,E,RAPIDAMENTE CHEGAR AO TRABALHO", "IR PELA AVENIDA PRINCIPAL A PÉ, ANDAR UM POUCO E OBSERVAR O MUNDO...")
         repetirNum(10,1)
+        opcaoavenida = str(input("QUAL OPÇÃO DESEJA? [A/B]: "))
+        ruaAvenida(opcaoavenida)
+        if ruaAvenida == "A":
+            break
+        opcaojc = str(input("QUAL OPÇAO DESEJA? [A/B]: "))
+        jornalCarona(opcaojc)
+        opcaocarona = str(input("QUAL OPÇÃO DESEJA? [A/B]: "))
+        caronaAceita(opcaocarona)
 
     elif opcao == "A" and op1 == 2:
         limpaTela()
@@ -188,10 +268,18 @@ while True:
         tempo(1)
         novaLinha()
         opcaoGame("IR PELA QUADRA PRINCIPAL DE CARRO,E,RAPIDAMENTE CHEGAR AO TRABALHO", "IR PELA AVENIDA PRINCIPAL A PÉ, ANDAR UM POUCO E OBSERVAR O MUNDO...")
-        repetirNum(10,1)
-
+        repetirNum(10,1) 
+        opcaoavenida = str(input("QUAL OPÇÃO DESEJA? [A/B]: "))
+        ruaAvenida(opcaoavenida)
+        if ruaAvenida == "A":
+            break
+        opcaojc = str(input("QUAL OPÇAO DESEJA? [A/B]: "))
+        jornalCarona(opcaojc)
+        opcaocarona = str(input("QUAL OPÇÃO DESEJA? [A/B]: "))
+        caronaAceita(opcaocarona)
+         
     elif opcao == "B" and op1 == 2:
-        limapTela()
+        limpaTela()
         escolha("MAYWS FICA BEBADO E VAI PARA O TRABALHO,LAVANDO SEU ROSTO E INDO PARA SUA GARAGEM... LIGA SEU CARRO E VAI AO TRABALHO...")
         for carro in range(1,100):
             if carro == 1:
@@ -267,9 +355,3 @@ while True:
         print("OPÇÃO ERRADA! TENTE NOVAMENTE!")
         linha("=-=", 20)
     break
-def opcaoSe():
-    opcao1 = str(input("QUAL OPÇÃO DESEJA? [A/B]: ")).upper()
-    return opcao1
-while True:
-    if opcaoSe() == "A":
-        print( "sucesso")
