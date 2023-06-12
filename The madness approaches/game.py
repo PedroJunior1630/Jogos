@@ -18,20 +18,42 @@ def novaLinha():
 
 def personagem():
     print("""
-    Nome: Mayws
+    Nome: Mayws Jonhson
     Idade: 33 anos
-    Peso: 65Kg
+    Peso: 65 KG
     Altura: 1,87m
-    Nacionalidade: Inlgês com descendência austriaca""")
+    Nacionalidade: Inglês com descendência austriaca""")
+    while True:
+        opcaoPer = str(input('Digite "K" para sair: '))
+        if opcaoPer == "K":
+            break
+        else:
+            opcaoError()
 
 def controlesJogo():
     print("""CONTROLES DO JOGO:
           Interatividade pura, escolha utilizando teclado.
-          Aperte "G" para ver o personagem 
-          Aperte "V" para voltar a uma opção anterior
+          #==================================================================================#
+          Aperte "C" na interação para ver as configurações.
+          Aperte "P" para ver o personagem.
+          Aperte "V" para voltar a uma opção anterior.
+          Aperte "K" para voltar ao jogo quando estiver nas configurações ou no personagem..
+          #==================================================================================#
+
+          _____________________________________________________________________________________
           Para interagir siga essas regras:
-              * Digite apenas Sim ou Não e nada mais.
-              * Se a interatividade pedir números então digite-os corretamente.""")
+              * Digite apenas A ou B e nada mais, exceto caso queria a configuração.
+              * Se a interatividade pedir números então digite-os corretamente.
+              * Em alguns momentos terão mini-games para passar de fase, então prepare-se.""")
+    p("_____________________________________________________________________________________")
+    while True:
+        opcaoControle = str(input("Digite a opção que deseja de acordo com as configurações: ")).upper().strip()
+        if opcaoControle == "P" or opcaoControle == "V" or opcaoControle == "K":
+            break
+        else:
+            opcaoError()
+    if opcaoControle == "P":
+        personagem()
 
 def repetirHora(zero,n,pontos,num,vezes):
     for var in range(1,vezes + 1):
@@ -57,9 +79,9 @@ def opcaoGame(a,b):
     novaLinha()
 
 def escolha(text):
-    print("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////")
-    print("/",text,"/")
-    print("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////")
+    print("-----------------------------------------------------------------------------------------------------------------------")
+    print("#",text,"#")
+    print("-----------------------------------------------------------------------------------------------------------------------")
 
 def repetirNum(vezes,intervalo):
     print("PENSE...")
@@ -80,12 +102,6 @@ linha(50,"##")
 print("SEJA MUITO BEM VINDO AMANTE DA LOUCURA AO NOSSO JOGO! ESCOLHA,EXPLORE E MORRA! HAHAHHAHAA!")
 linha(50,"##")
 tempo(2)
-
-print("""
-================================================
-# Copyright 2023 | ThiagoDesing | HenriqueDev  #
-================================================
-""")
 
 tempo(2)
 linha(25, "---")
@@ -211,27 +227,41 @@ def caronaAceita(opcaocarona):
     if opcaocarona == "A":
         escolha("MAYWS ENTRA NO CARRO DE SEU CHEFE...")
         tempo(2)
-        escolha("""
-        - Bom dia Mayws
-        > Bom dia 
-        - Que belo sexta, hoje a maxíma é de 10°C
-        > Sim.. Parece bom.
-        - Então...
-        - Como está a vida? Parece cansado...
-        > Vai normal.. hoje o turno é o mesmo?
-        - Sim, inclusive... teremos menos mortos hoje, afinal é uma sexta não?
-        > ...
-        - Brincadeiras a parte,mas Mayws....
-        - Você ainda sente falta dele?
-        - Sabe que somos amigos há muito tempo... Você precisa melhorar.. ver o valor da vida mesmo tendo acontecido aquilo.
-        > É, estou tentando que posso...
-        """)
+        p("- Bom dia Mayws")
+        tempo(1)
+        p("> Bom dia")
+        tempo(1)
+        p("- Que belo sexta, hoje a maxíma é de 10°C")
+        tempo(2)
+        p("> Sim.. Parece bom.")
+        tempo(1)
+        p("- Então...")
+        tempo(1)
+        p("- Como está a vida? Parece cansado...")
+        tempo(2)
+        p("> Vai normal.. hoje o turno é o mesmo?")
+        tempo(2)
+        p("- Sim, inclusive... teremos menos mortos hoje, afinal é uma sexta não?")
+        tempo(2)
+        p("> ...")
+        tempo(0.7)
+        p("- Brincadeiras a parte,mas Mayws....")
+        tempo(1)
+        p("- Você ainda sente falta dele?")
+        tempo(1)
+        p("- Sabe que somos amigos há muito tempo... Você precisa melhorar.. ver o valor da vida mesmo tendo acontecido aquilo.")
+        tempo(3.5)
+        p("> É, estou tentando que posso...")
+        tempo(1)
+
         print(" * CARRO PARANDO * ")
         tempo(0.5)
-        print("""
-        - Chegamos.. Poucos enterros hoje,o dia promete em, pronto?
-        > Sim, vamos...
-        """)
+        
+        p("- Chegamos.. Poucos enterros hoje,o dia promete em, pronto?")
+        tempo(1)
+        p("> Sim, vamos...")
+        tempo(0.5)
+        
     else:
         escolha("MAYWS RECUSA A CARONA DE SEU CHEFE EDUCADAMENTE E DIZ QUE VAI A PÉ PARA OBSERVAR O MUNDO...")
         tempo(3)
@@ -411,3 +441,21 @@ while True:
     else:
         opcaoError()
     break
+print("OBRIGADO POR ACOMPANHAR E TESTAR A FASE BETA DO NOSSO JOGO MARAVILHOSO, A LOUCURA SE APROXIMA!")
+tempo(3)
+print("CRÉDITOS: ")
+tempo(1)
+tempo(2)
+print("Programador por:   Pedro Henrique")
+tempo(1)
+print("Design por:     Thiago de Araújo")
+tempo(1)
+print("Roterizado por:    Thiago & Pedro")
+tempo(1)
+print("Agradecimentos:  Positivo, Pycharm, VsCode, Python.")
+tempo(1)
+print("""
+================================================
+# Copyright 2023 | ThiagoDesing | HenriqueDev  #
+================================================
+""")
