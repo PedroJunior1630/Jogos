@@ -226,41 +226,42 @@ def jornalCarona(opcaojc):
 def caronaAceita(opcaocarona):
     if opcaocarona == "A":
         escolha("MAYWS ENTRA NO CARRO DE SEU CHEFE...")
-        tempo(2)
+        tempo(4)
         p("- Bom dia Mayws")
-        tempo(1)
+        tempo(3)
         p("> Bom dia")
-        tempo(1)
+        tempo(3)
         p("- Que belo sexta, hoje a maxíma é de 10°C")
-        tempo(2)
+        tempo(5)
         p("> Sim.. Parece bom.")
-        tempo(1)
+        tempo(3)
         p("- Então...")
-        tempo(1)
+        tempo(3)
         p("- Como está a vida? Parece cansado...")
-        tempo(2)
+        tempo(4)
         p("> Vai normal.. hoje o turno é o mesmo?")
-        tempo(2)
+        tempo(3)
         p("- Sim, inclusive... teremos menos mortos hoje, afinal é uma sexta não?")
-        tempo(2)
+        tempo(3)
         p("> ...")
-        tempo(0.7)
+        tempo(2)
         p("- Brincadeiras a parte,mas Mayws....")
-        tempo(1)
+        tempo(3)
         p("- Você ainda sente falta dele?")
-        tempo(1)
+        tempo(3)
         p("- Sabe que somos amigos há muito tempo... Você precisa melhorar.. ver o valor da vida mesmo tendo acontecido aquilo.")
-        tempo(3.5)
+        tempo(6.5)
         p("> É, estou tentando que posso...")
-        tempo(1)
+        tempo(3)
 
         print(" * CARRO PARANDO * ")
-        tempo(0.5)
+        tempo(2.5)
         
         p("- Chegamos.. Poucos enterros hoje,o dia promete em, pronto?")
-        tempo(1)
+        tempo(3)
         p("> Sim, vamos...")
-        tempo(0.5)
+        tempo(1.5)
+        novaLinha()
         
     else:
         escolha("MAYWS RECUSA A CARONA DE SEU CHEFE EDUCADAMENTE E DIZ QUE VAI A PÉ PARA OBSERVAR O MUNDO...")
@@ -310,7 +311,8 @@ while True:
                 opcaoError()
 
         jornalCarona(opcaojc)
-
+        if jornalCarona == "A":
+            break
         while True:
             opcaocarona = str(input("QUAL OPÇÃO DESEJA? [A/B]: ")).upper().strip()
             if opcaocarona == "A" or opcaocarona == "B":
@@ -349,7 +351,8 @@ while True:
                 opcaoError()
 
         jornalCarona(opcaojc)
-
+        if jornalCarona == "A":
+            break
         while True:
             opcaocarona = str(input("QUAL OPÇÃO DESEJA? [A/B]: ")).upper().strip()
             if opcaocarona == "A" or opcaocarona == "B":
@@ -441,19 +444,25 @@ while True:
     else:
         opcaoError()
     break
+novaLinha()
 print("OBRIGADO POR ACOMPANHAR E TESTAR A FASE BETA DO NOSSO JOGO MARAVILHOSO, A LOUCURA SE APROXIMA!")
-tempo(3)
+tempo(8)
+novaLinha()
 print("CRÉDITOS: ")
-tempo(1)
 tempo(2)
+novaLinha()
 print("Programador por:   Pedro Henrique")
-tempo(1)
+tempo(3)
+novaLinha()
 print("Design por:     Thiago de Araújo")
-tempo(1)
+tempo(3)
+novaLinha()
 print("Roterizado por:    Thiago & Pedro")
-tempo(1)
+tempo(3)
+novaLinha()
 print("Agradecimentos:  Positivo, Pycharm, VsCode, Python.")
-tempo(1)
+tempo(3)
+novaLinha()
 print("""
 ================================================
 # Copyright 2023 | ThiagoDesing | HenriqueDev  #
