@@ -1,6 +1,7 @@
 import time
 import os
 
+
 def limpaTela():
     os.system('cls')
 
@@ -15,7 +16,10 @@ def espaco(tam):
 
 def novaLinha():
     print("\n")
-
+def opcaoError():
+        linha("=-=",20)
+        print("OPÇÃO ERRADA! TENTE NOVAMENTE!")
+        linha("=-=", 20)  
 def personagem():
     print("""
     Nome: Mayws Jonhson
@@ -24,36 +28,37 @@ def personagem():
     Altura: 1,87m
     Nacionalidade: Inglês com descendência austriaca""")
     while True:
-        opcaoPer = str(input('Digite "K" para sair: '))
+        opcaoPer = str(input('Digite "K" para sair: ')).upper().strip()
         if opcaoPer == "K":
             break
         else:
             opcaoError()
 
 def controlesJogo():
-    print("""CONTROLES DO JOGO:
-          Interatividade pura, escolha utilizando teclado.
-          #==================================================================================#
-          Aperte "C" na interação para ver as configurações.
-          Aperte "P" para ver o personagem.
-          Aperte "V" para voltar a uma opção anterior.
-          Aperte "K" para voltar ao jogo quando estiver nas configurações ou no personagem..
-          #==================================================================================#
-
-          _____________________________________________________________________________________
-          Para interagir siga essas regras:
-              * Digite apenas A ou B e nada mais, exceto caso queria a configuração.
-              * Se a interatividade pedir números então digite-os corretamente.
-              * Em alguns momentos terão mini-games para passar de fase, então prepare-se.""")
+    print("CONTROLES DO JOGO:")
+    tempo(0.5)
+    print(' Interatividade pura, escolha utilizando teclado.')
+    print(' #==================================================================================#')
+    print(' Aperte "C" na interação para ver as configurações.')
+    print(' Aperte "P" na interação para ver o personagem.')
+    print(' Aperte "M" na interação para voltar a tela principal do jogo.')
+    print(' Aperte "K" para voltar ao jogo quando estiver nas configurações ou no personagem...')
+    print(' #==================================================================================#\n  ')
+    tempo(0.5)
+    print('_____________________________________________________________________________________')
+    print('Para interagir siga essas regras:')
+    print(' * Digite apenas A ou B e nada mais, exceto caso queria a configuração.')
+    print(' * Se a interatividade pedir números então digite-os corretamente.')
+    print(' * Em alguns momentos terão mini-games para passar de fase, então prepare-se.')
     p("_____________________________________________________________________________________")
+    tempo(0.5)
     while True:
-        opcaoControle = str(input("Digite a opção que deseja de acordo com as configurações: ")).upper().strip()
-        if opcaoControle == "P" or opcaoControle == "V" or opcaoControle == "K":
+        opcaoControle = str(input('DIGITE "K" PARA SAIR:')).upper().strip()
+        if opcaoControle == 'K':
             break
         else:
             opcaoError()
-    if opcaoControle == "P":
-        personagem()
+
 
 def repetirHora(zero,n,pontos,num,vezes):
     for var in range(1,vezes + 1):
@@ -96,7 +101,61 @@ def gameOver():
     print("GAME OVER!")
     linha(10,"=+=")
 
+def opcaoMenu():
+    print('     ______________')
+    print('     | PERSONAGEM |')
+    print('     --------------\n')
+    tempo(0.5)
+    print('     _____________')
+    print('     | CONTROLES |')
+    print('     -------------\n')
+    tempo(0.5)
+    while True:
+        opcaomenu = str(input("DIGITE 'P' PARA VER O PERSONAGEM OU  'C' PARA VER OS CONTROLES:")).upper().strip()
+        if opcaomenu == 'P':
+            personagem()
+            break
+        elif opcaomenu == 'C':
+            controlesJogo()
+            break
+        else:
+            opcaoError()
 
+def menuStart():
+    print('     _________')
+    print('     | START |')
+    print('     ---------\n')
+    tempo(0.5)
+    print('     _________')
+    print('     |  MENU |')
+    print('     ---------\n')
+    tempo(0.5)
+    print('     _________')
+    print('     | SOBRE |')
+    print('     ---------\n')
+    print('DIGITE "S" PARA INICIAR')
+    print('DIGITE "M" PARA VER O MENU')
+    print('DIGITE "A" PARA VER MAIS')
+    while True:
+        opcaostart = str(input(': ')).upper().strip()
+        if opcaostart == 'M':
+            opcaoMenu()
+            break
+        elif opcaostart == 'A':
+            opcaoSobre()
+            break
+        elif opcaostart == 'S':
+            break
+        else:
+            opcaoError()
+    limpaTela()
+    tempo(1)
+
+
+def pressSpace():
+    space = str(input('Pressione ESPAÇO para continuar...'))
+
+menuStart()
 novaLinha()
 linha(50,"##")
 print("SEJA MUITO BEM VINDO AMANTE DA LOUCURA AO NOSSO JOGO! ESCOLHA,EXPLORE E MORRA! HAHAHHAHAA!")
@@ -105,7 +164,7 @@ tempo(2)
 
 tempo(2)
 linha(25, "---")
-p("PARA VER AS CONFIGURAÇÕES DO JOGO APERTE 'C' ")
+p("PARA VER AS CONFIGURAÇÕES DO JOGO APERTE 'M' ")
 linha(25,"---")
 tempo(2)
 novaLinha()
@@ -271,10 +330,7 @@ def caronaAceita(opcaocarona):
         gameOver()
         print("OBRIGADO POR TESTAR A BETA! :D")
         return opcaocarona
-def opcaoError():
-        linha("=-=",20)
-        print("OPÇÃO ERRADA! TENTE NOVAMENTE!")
-        linha("=-=", 20)   
+ 
 cont = 0
 distancia = 1000 
 
