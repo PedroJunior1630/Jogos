@@ -1,6 +1,13 @@
 import time
 import os
 
+WHITE = '\033[1;97m'RESET = '\033[0m'
+RED = '\033[1;91m'
+GREEN = '\033[1;92m'
+YELLOW = '\033[1;93m'
+BLUE = '\033[1;94m'
+MAGENTA = '\033[1;95m'
+CYAN = '\033[1;96m'
 
 def limpaTela():
     os.system('cls')
@@ -16,26 +23,43 @@ def espaco(tam):
 
 def novaLinha():
     print("\n")
+
 def opcaoError():
-        linha("=-=",20)
+        linha(RED + "=-=",20)
         print("OPÇÃO ERRADA! TENTE NOVAMENTE!")
         linha("=-=", 20)  
+        print(RESET)
+
 def personagem():
-    print("""
-    Nome: Mayws Jonhson
-    Idade: 33 anos
-    Peso: 65 KG
-    Altura: 1,87m
-    Nacionalidade: Inglês com descendência austriaca""")
+    print(CYAN)
+    print("Nome: Mayws Jonhson")
+    tempo(0.5)
+    print("Idade: 33 anos")
+    tempo(0.5)
+    print("Peso: 65 KG")
+    tempo(0.5)
+    print("Altura: 1,87m")
+    tempo(0.5)
+    print("Nacionalidade: Inglês com descendência austriaca")
+    print(RESET)
+    novaLinha()
+
     while True:
-        opcaoPer = str(input('Digite "K" para sair: ')).upper().strip()
-        if opcaoPer == "K":
+        opcaoPer = str(input(GREEN +'DIGITE "S" PARA IR AO MENU PRINCIPAL / "M" PARA VOLTAR AO MENU: '+ RESET)).upper().strip()
+        if opcaoPer == "S":
+            limpaTela()
+            menuStart()
+            break
+        elif opcaoPer == "M":
+            limpaTela()
+            opcaoMenu()
             break
         else:
             opcaoError()
 
 def controlesJogo():
-    print("CONTROLES DO JOGO:")
+    novaLinha()
+    print(CYAN + "CONTROLES DO JOGO:")
     tempo(0.5)
     print(' Interatividade pura, escolha utilizando teclado.')
     print(' #==================================================================================#')
@@ -50,15 +74,22 @@ def controlesJogo():
     print(' * Digite apenas A ou B e nada mais, exceto caso queria a configuração.')
     print(' * Se a interatividade pedir números então digite-os corretamente.')
     print(' * Em alguns momentos terão mini-games para passar de fase, então prepare-se.')
-    p("_____________________________________________________________________________________")
+    p("_____________________________________________________________________________________"+ RESET)
     tempo(0.5)
+    novaLinha()
+
     while True:
-        opcaoControle = str(input('DIGITE "K" PARA SAIR:')).upper().strip()
-        if opcaoControle == 'K':
+        opcaoControle = str(input(GREEN+'DIGITE "S" PARA IR A TELA INICIAL / "M" PARA VOLTAR AO MENU:'+RESET)).upper().strip()
+        if opcaoControle == 'S':
+            limpaTela()
+            menuStart()
+            break
+        elif opcaoControle == 'M':
+            limpaTela()
+            opcaoMenu()
             break
         else:
             opcaoError()
-
 
 def repetirHora(zero,n,pontos,num,vezes):
     for var in range(1,vezes + 1):
@@ -101,28 +132,65 @@ def gameOver():
     print("GAME OVER!")
     linha(10,"=+=")
 
+def opcaoSobre():
+    print(GREEN)
+    linha(30,"=+=")
+    print('Olá, bem-vindo e veja um pouco mais sobre nosso jogo!')
+    print('JOGO FEITOR POR PEDRO HENRIQUE(PROGRAMADOR) & THIAGO DE ARAÚJO (DESING GRÁFICO)')
+    print('Versão: BETA 5.0.2')
+    linha(30,"=+=")
+    tempo(0.5)
+    novaLinha()
+    linha(52,"---")
+    print('Sobre: A história do jogo conta sobre Mayws... um homen que perdeu sua familía em um bombardeio na primeira guerra mundial e 7 após esse evento traumatizante, Mayws trabalha em um cemitério enterrando corpos, mas a loucura do passado lhe assombra de uma maneira infernal...')
+    linha(52,"---")
+    novaLinha()
+    print('Digite "S" para voltar a tela inicial ou "M" para voltar ao menu.')
+
+    while True:
+        presskm = str(input(":")).upper().strip()
+        if presskm == "S":
+            limpaTela()
+            menuStart()
+            break
+        elif presskm == "M":
+            limpaTela()
+            opcaoMenu()
+            break
+        else:
+            opcaoError()
+
+    print(RESET)
+
 def opcaoMenu():
-    print('     ______________')
+    print(CYAN +'     ______________')
     print('     | PERSONAGEM |')
     print('     --------------\n')
     tempo(0.5)
     print('     _____________')
     print('     | CONTROLES |')
-    print('     -------------\n')
+    print('     -------------\n' + RESET)
     tempo(0.5)
+
     while True:
-        opcaomenu = str(input("DIGITE 'P' PARA VER O PERSONAGEM OU  'C' PARA VER OS CONTROLES:")).upper().strip()
+        opcaomenu = str(input(GREEN + 'DIGITE "P" PARA VER O PERSONAGEM / "C" PARA VER OS CONTROLES OU "S" PARA VOLTAR A TELA INICIAL:' + RESET)).upper().strip()
         if opcaomenu == 'P':
+            limpaTela()
             personagem()
             break
         elif opcaomenu == 'C':
+            limpaTela()
             controlesJogo()
+            break
+        elif opcaomenu == "S":
+            limpaTela()
+            menuStart()
             break
         else:
             opcaoError()
 
 def menuStart():
-    print('     _________')
+    print(CYAN + '     _________')
     print('     | START |')
     print('     ---------\n')
     tempo(0.5)
@@ -132,16 +200,19 @@ def menuStart():
     tempo(0.5)
     print('     _________')
     print('     | SOBRE |')
-    print('     ---------\n')
-    print('DIGITE "S" PARA INICIAR')
+    print('     ---------\n' + RESET)
+    print(GREEN + 'DIGITE "S" PARA INICIAR')
     print('DIGITE "M" PARA VER O MENU')
-    print('DIGITE "A" PARA VER MAIS')
+    print('DIGITE "A" PARA VER MAIS'+ RESET )
+
     while True:
         opcaostart = str(input(': ')).upper().strip()
         if opcaostart == 'M':
+            limpaTela()
             opcaoMenu()
             break
         elif opcaostart == 'A':
+            limpaTela()
             opcaoSobre()
             break
         elif opcaostart == 'S':
@@ -152,9 +223,16 @@ def menuStart():
     tempo(1)
 
 
-def pressSpace():
-    space = str(input('Pressione ESPAÇO para continuar...'))
+def pressEnter():
+    while True:
+        enter = str(input('Pressione ENTER para continuar...'))
+        if enter != "":
+            limpaTela()
+        else:
+            break
+        limpaTela()
 
+limpaTela()
 menuStart()
 novaLinha()
 linha(50,"##")
@@ -180,12 +258,13 @@ p("CARREGANDO.................[//////////] 100%")
 tempo(3)
 limpaTela()
 linha(60,"-")
-tempo(1)
+tempo(0.5)
 print("""Em 1914 inicia-se a primeira guerra mundial da história,
 contendo 17 páises confrotado pela França X União Soviética,
 um desses páises era a Inglaterra... Meu páis...""")
-tempo(8)
+tempo(0.5)
 linha(60,"-")
+pressEnter()
 
 novaLinha()
 print("MANCHESTER, INGLATERRA...")
@@ -208,7 +287,7 @@ tempo(2)
 limpaTela()
 escolha("""Mayws.. Um homen simples acorda 05:30 e levanta de sua cama piscando lentamente, pega seus ocúlos
 e se dirige a cozinha,bebe um copo d'água e pensa no que fazer pela manhã VAMOS VER...""")
-tempo(7)
+pressEnter()
 novaLinha()
 
 opcaoGame("FAZER CAFÉ", "BEBER WISKY")
@@ -222,7 +301,7 @@ while True:
         op1 +=1
         limpaTela()
         escolha("MAYWS FAZ O CAFÉ MAS FICA EM DÚVIDA DO QUE COMER...")
-        tempo(1)
+        pressEnter()
         novaLinha()
         opcaoGame("UM PEDAÇO DE PÃO", "UM RESTO DE BOLO FOFO")
         repetirNum(10,1)
@@ -231,7 +310,7 @@ while True:
         op1 +=2
         limpaTela()
         escolha("MAYWS QUER SEU WISKY PARA ACORDAR... COMO BEBER?")
-        tempo(1)
+        presEnter()
         novaLinha()
         opcaoGame("UM COPINHO...", "VIRAR A GARRAFA TODA!")
         repetirNum(10,1)
@@ -243,13 +322,13 @@ while True:
 def ruaAvenida(opcaoavenida):
         if opcaoavenida == "A":
             escolha("VOCÊ CHEGA NO CEMITÉRIO DE MANCHESTER ÁS 07:15 E BATE SEU PONTO , A MANHÃ PARECE FRIA HOJE...")
-            tempo(2)
+            pressEnter()
             novaLinha()
             print("O JOGO ACABOU, OBRIGADO POR TESTAR A BETA! :D")
             return opcaoavenida
         else:
             escolha("MAYWS ESTÁ ANDANDO E VÊ UMA LOJA COM UMA BANCADA DE JORNAIS NO POSTO DE GASOLINA...OPS! VOCÊ TEM £0,25 O QUE ACHA DE UM JORNAL?")
-            tempo(3)
+            pressEnter()
             novaLinha()
             opcaoGame("COMPRAR JORNAL", "NÃO COMPRAR E IR LOGO...")
             repetirNum(10,1)
@@ -257,7 +336,7 @@ def ruaAvenida(opcaoavenida):
 def jornalCarona(opcaojc):
      if opcaojc == "A":
                 escolha("O JORNAL VINHA COM ALGUMAS INFORMAÇÕES INRRELEVANTES, MAS A PRINCIPAL ERA SOBRE...")
-                tempo(2)
+                pressEnter()
                 novaLinha()
                 print("""
                     [AQUI ENTRA UM JORNAL]
@@ -265,7 +344,7 @@ def jornalCarona(opcaojc):
                 tempo(3)
                 novaLinha()
                 escolha("MAYWS SE ENTRISTECE AO LER... PESADELOS AINDA-OS ASSOMBRA.. MAYWS SE DIRIGE AO TRABALHO...")
-                tempo(2)
+                pressEnter()
                 novaLinha()
                 print("""
                  [ flashback... alguma coisa tenebrosa]
@@ -273,7 +352,7 @@ def jornalCarona(opcaojc):
                 tempo(2)
      else:
         escolha("SEU CHEFE PASSA PARA REABASTECER O TANQUE E O VÊ, ENTÃO LHE OFERECE UMA CARONA ATÉ O TRABALHO...")
-        tempo(3)
+        pressEnter()
         novaLinha()
         print("""
         [ AQUI ENTRA UM CARRO]
@@ -285,7 +364,7 @@ def jornalCarona(opcaojc):
 def caronaAceita(opcaocarona):
     if opcaocarona == "A":
         escolha("MAYWS ENTRA NO CARRO DE SEU CHEFE...")
-        tempo(4)
+        pressEnter()
         p("- Bom dia Mayws")
         tempo(3)
         p("> Bom dia")
@@ -324,9 +403,9 @@ def caronaAceita(opcaocarona):
         
     else:
         escolha("MAYWS RECUSA A CARONA DE SEU CHEFE EDUCADAMENTE E DIZ QUE VAI A PÉ PARA OBSERVAR O MUNDO...")
-        tempo(3)
+        pressEnter()
         escolha("CHEGANDO CEMITÉRIO ÁS 07:15MAYWS VÊ UM NEVOEIRO DENSO, COM SEU SOBRETUDO ELE ENTRA E VAI PARA A CABANA DE FERRAMENTAS")
-        tempo(3)
+        pressEnter()
         gameOver()
         print("OBRIGADO POR TESTAR A BETA! :D")
         return opcaocarona
@@ -343,7 +422,7 @@ while True:
     if opcao == "A" or opcao == "B" and op1 == 1:
         limpaTela()
         escolha("MAYWS TOMA SEU BANHO E SE DIRIGE AO SEU TRABALHO... QUAL CAMINHO IR?")
-        tempo(1)
+        pressEnter()
         novaLinha()
         opcaoGame("IR PELA QUADRA PRINCIPAL DE CARRO,E,RAPIDAMENTE CHEGAR AO TRABALHO", "IR PELA AVENIDA PRINCIPAL A PÉ, ANDAR UM POUCO E OBSERVAR O MUNDO...")
         repetirNum(10,1)
@@ -383,7 +462,7 @@ while True:
     elif opcao == "A" and op1 == 2:
         limpaTela()
         escolha("MAYWS TOMA SUE COPINHO DE WISKY PARA ACORDAR, E SE DIRIGE AO BANHEIRO PARA LAVAR SEU ROSTO.. QUAL CAMINHO IREMOS AO TRABALHO?")
-        tempo(2)
+        pressEnter()
         novaLinha()
         opcaoGame("IR PELA QUADRA PRINCIPAL DE CARRO,E,RAPIDAMENTE CHEGAR AO TRABALHO", "IR PELA AVENIDA PRINCIPAL A PÉ, ANDAR UM POUCO E OBSERVAR O MUNDO...")
         repetirNum(10,1) 
@@ -423,7 +502,7 @@ while True:
     elif opcao == "B" and op1 == 2:
         limpaTela()
         escolha("MAYWS FICA BEBADO E VAI PARA O TRABALHO,LAVANDO SEU ROSTO E INDO PARA SUA GARAGEM... LIGA SEU CARRO E VAI AO TRABALHO...")
-        tempo(2)
+        pressEnter()
         for carro in range(1,100):
             if carro == 1:
                 print("  QUADRA PRINCIPAL")
@@ -460,7 +539,7 @@ while True:
         if opcaox == "A":
             limpaTela()
             escolha("MAYWS BATE O CARRO EM UMA VELOCIDADE ABISMAL CONTRA ARVORE,FAZENDO O MOTOR EXPLODIR E JA INCONCIENTE MORRE...")
-            tempo(2)
+            pressEnter()
             novaLinha()
             gameOver()
             tempo(2)
@@ -489,6 +568,7 @@ while True:
         elif opcaox == "B":
             limpaTela()
             escolha("MAYWS DESVIA DA ARVORE A TEMPO E CONSEGUE CHEGAR AO CEMITÉRIO NO HORÁRIO,AS 07:15")
+            pressEnter()
             novaLinha()
             gameOver()
             novaLinha()
@@ -500,6 +580,7 @@ while True:
     else:
         opcaoError()
     break
+pressEnter()
 novaLinha()
 print("OBRIGADO POR ACOMPANHAR E TESTAR A FASE BETA DO NOSSO JOGO MARAVILHOSO, A LOUCURA SE APROXIMA!")
 tempo(8)
