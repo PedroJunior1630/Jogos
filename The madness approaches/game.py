@@ -1,7 +1,8 @@
 import time
 import os
 
-WHITE = '\033[1;97m'RESET = '\033[0m'
+WHITE = '\033[1;97m'
+RESET = '\033[0m'
 RED = '\033[1;91m'
 GREEN = '\033[1;92m'
 YELLOW = '\033[1;93m'
@@ -93,14 +94,26 @@ def controlesJogo():
 
 def repetirHora(zero,n,pontos,num,vezes):
     for var in range(1,vezes + 1):
-        print(zero,n,pontos,num)
-        tempo(1)
+        print("        +       ")
+        print("=================")
+        print("   ",zero,n,pontos,num)
+        print("=================")
+        print("   ZZzzzz")
+        print("********")
+        print("([- . -])")
+        tempo(1.5)
+        if var != 5:
+            limpaTela()
         num = num + 5
+        if var == 4:
+            print(RED)
+        
 
 def p(text):
     print(f"{text}")
 
 def opcaoGame(a,b):
+    print(CYAN)
     largura = len(a) + 7
     largurab = len(b) + 7
     print("#" * largura)
@@ -111,23 +124,27 @@ def opcaoGame(a,b):
     print("#" * largurab)
     print("# B-",b,"#")
     print("#" * largurab)
+    print(RESET)
     tempo(3)
     novaLinha()
 
 def escolha(text):
-    print("-----------------------------------------------------------------------------------------------------------------------")
+    print(CYAN + "-----------------------------------------------------------------------------------------------------------------------")
     print("#",text,"#")
-    print("-----------------------------------------------------------------------------------------------------------------------")
+    print("-----------------------------------------------------------------------------------------------------------------------" + RESET)
 
 def repetirNum(vezes,intervalo):
+    print(YELLOW)
     print("PENSE...")
     tempo(1)
     for var in range(1,vezes+1):
         print(var,end =" > ")
         tempo(intervalo)
     print("FIM")
+    print(RESET)
 
 def gameOver():
+    print(RED)
     linha(10,"=+=")
     print("GAME OVER!")
     linha(10,"=+=")
@@ -225,29 +242,49 @@ def menuStart():
 
 def pressEnter():
     while True:
-        enter = str(input('Pressione ENTER para continuar...'))
+        enter = str(input(WHITE +'Pressione ENTER para continuar...' + RESET))
         if enter != "":
             limpaTela()
         else:
             break
         limpaTela()
+def cemiterioM():
+    tempo(0.5)
+    novaLinha()
+    print("CEMITÉRIO DE MACNHESTER")
+    print("   __")
+    print("__| |__")
+    print("|__  __|")
+    print("  | |")
+    print("  | |")
+    print("~~|~~~~~~")
+    print("~~ ~ ~~~~~~")
+    print("~~~~~~~~~~~~~~")
+
+def carro():
+    tempo(0.5)
+    novaLinha()
+    print("       ________")
+    print(" _____/ __|_____\.")
+    print("/         |°     |")
+    print("---(*) ----(*) --")
 
 limpaTela()
 menuStart()
 novaLinha()
-linha(50,"##")
-print("SEJA MUITO BEM VINDO AMANTE DA LOUCURA AO NOSSO JOGO! ESCOLHA,EXPLORE E MORRA! HAHAHHAHAA!")
-linha(50,"##")
+linha(50,WHITE +"##")
+print(RED + "SEJA MUITO BEM VINDO AMANTE DA LOUCURA AO NOSSO JOGO! ESCOLHA,EXPLORE E MORRA! HAHAHHAHAA!" + RESET)
+linha(50, WHITE + "##")
 tempo(2)
-
+print(RESET)
 tempo(2)
 linha(25, "---")
-p("PARA VER AS CONFIGURAÇÕES DO JOGO APERTE 'M' ")
-linha(25,"---")
+p(GREEN + "PARA VER AS CONFIGURAÇÕES DO JOGO APERTE 'M' " + RESET)
+linha(25, WHITE + "---")
 tempo(2)
 novaLinha()
 
-p("CARREGANDO.................[//////---] 70%")
+p(GREEN + "CARREGANDO.................[//////---] 70%")
 tempo(1)
 p("CARREGANDO.................[///////--] 80%")
 tempo(1)
@@ -257,17 +294,17 @@ p("CARREGANDO.................[//////////] 100%")
 
 tempo(3)
 limpaTela()
-linha(60,"-")
+linha(60,WHITE + "-" )
 tempo(0.5)
-print("""Em 1914 inicia-se a primeira guerra mundial da história,
-contendo 17 páises confrotado pela França X União Soviética,
-um desses páises era a Inglaterra... Meu páis...""")
+print(RESET + """Em 1914 inicia-se a primeira guerra mundial da história,
+contendo 17 países confrontado pela França X União Soviética,
+um desses países era a Inglaterra... Meu país...""")
 tempo(0.5)
-linha(60,"-")
+linha(60, WHITE + "-")
 pressEnter()
 
 novaLinha()
-print("MANCHESTER, INGLATERRA...")
+print(CYAN + "MANCHESTER, INGLATERRA...")
 tempo(1)
 novaLinha()
 
@@ -281,133 +318,182 @@ tempo(3)
 limpaTela()
 repetirHora("0",5,":",10,5)
 novaLinha()
-
 p("BIPPPPP!!!!")
+print("*******")
+print("([o . o])"+ RESET)
 tempo(2)
 limpaTela()
-escolha("""Mayws.. Um homen simples acorda 05:30 e levanta de sua cama piscando lentamente, pega seus ocúlos
+escolha( """Mayws.. Um homen simples acorda 05:30 e levanta de sua cama piscando lentamente, pega seus ocúlos
 e se dirige a cozinha,bebe um copo d'água e pensa no que fazer pela manhã VAMOS VER...""")
+print(CYAN + "|~~|")
+print("|  |")
+print("|__|")
 pressEnter()
 novaLinha()
 
 opcaoGame("FAZER CAFÉ", "BEBER WISKY")
 
-repetirNum(10,1)
+repetirNum(5,1)
 novaLinha()
 op1 = 0
 while True:
-    opcao = str(input("QUAL OPÇÃO DESEJA? [A/B]: ")).upper()
+    opcao = str(input(GREEN + "QUAL OPÇÃO DESEJA? [A/B]: " + RESET)).upper()
     if opcao == "A":
         op1 +=1
         limpaTela()
-        escolha("MAYWS FAZ O CAFÉ MAS FICA EM DÚVIDA DO QUE COMER...")
+        escolha(CYAN + "MAYWS FAZ O CAFÉ MAS FICA EM DÚVIDA DO QUE COMER...")
+        print(" ~~~§§§§§")
+        print("|________|")
+        print("|       /]")
+        print("\______/")
         pressEnter()
         novaLinha()
         opcaoGame("UM PEDAÇO DE PÃO", "UM RESTO DE BOLO FOFO")
-        repetirNum(10,1)
+        print("/--------\.")
+        print("| °    °  |")
+        print("\_________/")
+        tempo(0.5)
+        novaLinha()
+        print("       __C__")
+        print("     _|____|_")
+        print("   _|________|_")
+        print("  |____________|")
+        repetirNum(5,1)
         break
     elif opcao == "B":
         op1 +=2
         limpaTela()
-        escolha("MAYWS QUER SEU WISKY PARA ACORDAR... COMO BEBER?")
-        presEnter()
+        escolha(CYAN + "MAYWS QUER SEU WISKY PARA ACORDAR... COMO BEBER?")
+        pressEnter()
         novaLinha()
         opcaoGame("UM COPINHO...", "VIRAR A GARRAFA TODA!")
-        repetirNum(10,1)
+        print("|__|")
+        tempo(0.5)
+        novaLinha()
+        print("   __")
+        print("  [ ]")
+        print(" /   \.")
+        print("/     \.") 
+        print("|     |")
+        print("|     |")
+        print("|     |")
+        print("\_____/")
+        repetirNum(5,1)
         break
     else:
-        linha("=-=",20)
+        linha(RED + "=-=",20)
         print("OPÇÃO ERRADA! TENTE NOVAMENTE!")
         linha("=-=", 20)
+        print(RESET)
 def ruaAvenida(opcaoavenida):
         if opcaoavenida == "A":
-            escolha("VOCÊ CHEGA NO CEMITÉRIO DE MANCHESTER ÁS 07:15 E BATE SEU PONTO , A MANHÃ PARECE FRIA HOJE...")
+            escolha(CYAN + "VOCÊ CHEGA NO CEMITÉRIO DE MANCHESTER ÁS 07:15 E BATE SEU PONTO , A MANHÃ PARECE FRIA HOJE...")
+            cemiterioM()
             pressEnter()
             novaLinha()
-            print("O JOGO ACABOU, OBRIGADO POR TESTAR A BETA! :D")
             return opcaoavenida
         else:
-            escolha("MAYWS ESTÁ ANDANDO E VÊ UMA LOJA COM UMA BANCADA DE JORNAIS NO POSTO DE GASOLINA...OPS! VOCÊ TEM £0,25 O QUE ACHA DE UM JORNAL?")
+            escolha(CYAN + "MAYWS ESTÁ ANDANDO E VÊ UMA LOJA COM UMA BANCADA DE JORNAIS NO POSTO DE GASOLINA...OPS! VOCÊ TEM £0,25 O QUE ACHA DE UM JORNAL?")
+            novaLinha()
+            print("Gas Station")
+            print(" __________")
+            print("/          \.")
+            print(" ----------")
+            print(" | []     |")
+            print(" | [^     |")
+            print(" | []     |")
+            print(" ------------------------")
             pressEnter()
             novaLinha()
-            opcaoGame("COMPRAR JORNAL", "NÃO COMPRAR E IR LOGO...")
-            repetirNum(10,1)
+            opcaoGame("COMPRAR JORNAL £££", "NÃO COMPRAR E IR LOGO... -> ->")
+            repetirNum(5,1)
 
 def jornalCarona(opcaojc):
      if opcaojc == "A":
-                escolha("O JORNAL VINHA COM ALGUMAS INFORMAÇÕES INRRELEVANTES, MAS A PRINCIPAL ERA SOBRE...")
+                escolha(CYAN + "O JORNAL VINHA COM ALGUMAS INFORMAÇÕES INRRELEVANTES, MAS A PRINCIPAL ERA SOBRE...")
                 pressEnter()
                 novaLinha()
-                print("""
-                    [AQUI ENTRA UM JORNAL]
-                """)
+                print("_____________")
+                print("|  JOURNAL  |")
+                print("|           |")
+                print("-------------")
+                print("|~~~~ |     |")
+                print("| ~~~ |     |")
+                print("| ~~~~~~~~  |")
+                print("| --------  |")
+                print("| --------  |")
+                print("|___________|")
                 tempo(3)
                 novaLinha()
-                escolha("MAYWS SE ENTRISTECE AO LER... PESADELOS AINDA-OS ASSOMBRA.. MAYWS SE DIRIGE AO TRABALHO...")
+                escolha(CYAN + "MAYWS SE ENTRISTECE AO LER... PESADELOS AINDA-OS ASSOMBRA.. MAYWS SE DIRIGE AO TRABALHO...")
                 pressEnter()
+                tempo(0.5)
                 novaLinha()
-                print("""
-                 [ flashback... alguma coisa tenebrosa]
-                """)
-                tempo(2)
+                cemiterioM()
+                escolha("CHEGANDO CEMITÉRIO ÁS 07:15 MAYWS VÊ UM NEVOEIRO DENSO, COM SEU SOBRETUDO ELE ENTRA E VAI PARA A CABANA DE FERRAMENTAS")
+                novaLinha()
+                tempo(1)
+                return opcaojc
+                
      else:
-        escolha("SEU CHEFE PASSA PARA REABASTECER O TANQUE E O VÊ, ENTÃO LHE OFERECE UMA CARONA ATÉ O TRABALHO...")
+        escolha(CYAN + "SEU CHEFE PASSA PARA REABASTECER O TANQUE E O VÊ, ENTÃO LHE OFERECE UMA CARONA ATÉ O TRABALHO...")
         pressEnter()
         novaLinha()
-        print("""
-        [ AQUI ENTRA UM CARRO]
-        """)
+        carro()
         tempo(2)
-        opcaoGame("ACEITAR A CARONA","REJEITAR EDUCADAMENTE E IR A PÉ")
-        repetirNum(10,1)
+        opcaoGame(CYAN + "ACEITAR A CARONA","REJEITAR EDUCADAMENTE E IR A PÉ")
+        repetirNum(5,1)
         
 def caronaAceita(opcaocarona):
     if opcaocarona == "A":
-        escolha("MAYWS ENTRA NO CARRO DE SEU CHEFE...")
+        escolha(CYAN + "MAYWS ENTRA NO CARRO DE SEU CHEFE...")
         pressEnter()
-        p("- Bom dia Mayws")
-        tempo(3)
-        p("> Bom dia")
-        tempo(3)
-        p("- Que belo sexta, hoje a maxíma é de 10°C")
-        tempo(5)
-        p("> Sim.. Parece bom.")
-        tempo(3)
-        p("- Então...")
-        tempo(3)
-        p("- Como está a vida? Parece cansado...")
-        tempo(4)
-        p("> Vai normal.. hoje o turno é o mesmo?")
-        tempo(3)
+        p(YELLOW + "- Bom dia Mayws")
+        tempo(2)
+        p(BLUE + "> Bom dia")
+        tempo(2)
+        p(YELLOW +"- Que belo sexta, hoje a maxíma é de 10°C")
+        tempo(2)
+        p(BLUE + "> Sim.. Parece bom.")
+        tempo(2)
+        p(YELLOW +"- Então...")
+        tempo(2)
+        p(YELLOW +"- Como está a vida? Parece cansado...")
+        tempo(2)
+        p(BLUE + "> Vai normal.. hoje o turno é o mesmo?")
+        tempo(2)
         p("- Sim, inclusive... teremos menos mortos hoje, afinal é uma sexta não?")
         tempo(3)
-        p("> ...")
+        p(BLUE + "> ...")
         tempo(2)
-        p("- Brincadeiras a parte,mas Mayws....")
+        p(YELLOW +"- Brincadeiras a parte,mas Mayws....")
+        tempo(2)
+        p(YELLOW +"- Você ainda sente falta dele?")
+        tempo(2)
+        p(YELLOW +"- Sabe que somos amigos há muito tempo... Você precisa melhorar.. ver o valor da vida mesmo tendo acontecido aquilo.")
         tempo(3)
-        p("- Você ainda sente falta dele?")
-        tempo(3)
-        p("- Sabe que somos amigos há muito tempo... Você precisa melhorar.. ver o valor da vida mesmo tendo acontecido aquilo.")
-        tempo(6.5)
-        p("> É, estou tentando que posso...")
-        tempo(3)
+        p(BLUE + "> É, estou tentando que posso...")
+        tempo(2)
 
-        print(" * CARRO PARANDO * ")
+        print(GREEN + " * CARRO PARANDO * ")
         tempo(2.5)
         
-        p("- Chegamos.. Poucos enterros hoje,o dia promete em, pronto?")
+        p(YELLOW +"- Chegamos.. Poucos enterros hoje,o dia promete em, pronto?")
         tempo(3)
-        p("> Sim, vamos...")
+        p(BLUE + "> Sim, vamos...")
         tempo(1.5)
+        cemiterioM()
         novaLinha()
         
     else:
-        escolha("MAYWS RECUSA A CARONA DE SEU CHEFE EDUCADAMENTE E DIZ QUE VAI A PÉ PARA OBSERVAR O MUNDO...")
+        escolha(CYAN + "MAYWS RECUSA A CARONA DE SEU CHEFE EDUCADAMENTE E DIZ QUE VAI A PÉ PARA OBSERVAR O MUNDO...")
         pressEnter()
-        escolha("CHEGANDO CEMITÉRIO ÁS 07:15MAYWS VÊ UM NEVOEIRO DENSO, COM SEU SOBRETUDO ELE ENTRA E VAI PARA A CABANA DE FERRAMENTAS")
+        escolha("CHEGANDO CEMITÉRIO ÁS 07:15 MAYWS VÊ UM NEVOEIRO DENSO, COM SEU SOBRETUDO ELE ENTRA E VAI PARA A CABANA DE FERRAMENTAS")
+        cemiterioM()
+        novaLinha()
+        tempo(0.5)
         pressEnter()
         gameOver()
-        print("OBRIGADO POR TESTAR A BETA! :D")
         return opcaocarona
  
 cont = 0
@@ -415,60 +501,60 @@ distancia = 1000
 
 while True:
 
-    opcao = str(input("QUAL OPÇÃO DESEJA? [A/B]: ")).upper()
+    opcao = str(input(GREEN + "QUAL OPÇÃO DESEJA? [A/B]: ")).upper()
     tempo(1)
     novaLinha()
 
     if opcao == "A" or opcao == "B" and op1 == 1:
         limpaTela()
-        escolha("MAYWS TOMA SEU BANHO E SE DIRIGE AO SEU TRABALHO... QUAL CAMINHO IR?")
+        escolha(CYAN + "MAYWS TOMA SEU BANHO E SE DIRIGE AO SEU TRABALHO... QUAL CAMINHO IR?")
         pressEnter()
         novaLinha()
         opcaoGame("IR PELA QUADRA PRINCIPAL DE CARRO,E,RAPIDAMENTE CHEGAR AO TRABALHO", "IR PELA AVENIDA PRINCIPAL A PÉ, ANDAR UM POUCO E OBSERVAR O MUNDO...")
-        repetirNum(10,1)
+        repetirNum(5,1)
 
         while True:
-            opcaoavenida = str(input("QUAL OPÇÃO DESEJA? [A/B]: ")).upper().strip()
+            opcaoavenida = str(input(GREEN + "QUAL OPÇÃO DESEJA? [A/B]: ")).upper().strip()
             if opcaoavenida == "A" or opcaoavenida == "B":
                 break
             else:
                 opcaoError()
                 
         ruaAvenida(opcaoavenida)
-        if ruaAvenida == "A":
+        if opcaoavenida == "A":
             break
 
         while True:
-            opcaojc = str(input("QUAL OPÇAO DESEJA? [A/B]: ")).upper().strip()
+            opcaojc = str(input(GREEN + "QUAL OPÇAO DESEJA? [A/B]: ")).upper().strip()
             if opcaojc == "A" or opcaojc == "B":
                 break
             else:
                 opcaoError()
 
         jornalCarona(opcaojc)
-        if jornalCarona == "A":
+        if opcaojc == "A":
             break
         while True:
-            opcaocarona = str(input("QUAL OPÇÃO DESEJA? [A/B]: ")).upper().strip()
+            opcaocarona = str(input(GREEN + "QUAL OPÇÃO DESEJA? [A/B]: ")).upper().strip()
             if opcaocarona == "A" or opcaocarona == "B":
                 break
             else:
                 opcaoError()
 
         caronaAceita(opcaocarona)
-        if caronaAceita == "B":
+        if opcaocarona == "B":
             break
 
     elif opcao == "A" and op1 == 2:
         limpaTela()
-        escolha("MAYWS TOMA SUE COPINHO DE WISKY PARA ACORDAR, E SE DIRIGE AO BANHEIRO PARA LAVAR SEU ROSTO.. QUAL CAMINHO IREMOS AO TRABALHO?")
+        escolha(CYAN + "MAYWS TOMA SUE COPINHO DE WISKY PARA ACORDAR, E SE DIRIGE AO BANHEIRO PARA LAVAR SEU ROSTO.. QUAL CAMINHO IREMOS AO TRABALHO?")
         pressEnter()
         novaLinha()
         opcaoGame("IR PELA QUADRA PRINCIPAL DE CARRO,E,RAPIDAMENTE CHEGAR AO TRABALHO", "IR PELA AVENIDA PRINCIPAL A PÉ, ANDAR UM POUCO E OBSERVAR O MUNDO...")
-        repetirNum(10,1) 
+        repetirNum(5,1) 
 
         while True:
-            opcaoavenida = str(input("QUAL OPÇÃO DESEJA? [A/B]: ")).upper().strip()
+            opcaoavenida = str(input(GREEN + "QUAL OPÇÃO DESEJA? [A/B]: ")).upper().strip()
             if opcaoavenida == "A" or opcaoavenida == "B":
                 break
             else:
@@ -479,7 +565,7 @@ while True:
             break
 
         while True:
-            opcaojc = str(input("QUAL OPÇAO DESEJA? [A/B]: ")).upper().strip()
+            opcaojc = str(input(GREEN + "QUAL OPÇAO DESEJA? [A/B]: ")).upper().strip()
             if opcaojc == "A" or opcaojc == "B":
                 break
             else:
@@ -489,7 +575,7 @@ while True:
         if jornalCarona == "A":
             break
         while True:
-            opcaocarona = str(input("QUAL OPÇÃO DESEJA? [A/B]: ")).upper().strip()
+            opcaocarona = str(input(GREEN + "QUAL OPÇÃO DESEJA? [A/B]: ")).upper().strip()
             if opcaocarona == "A" or opcaocarona == "B":
                 break
             else:
@@ -501,11 +587,14 @@ while True:
          
     elif opcao == "B" and op1 == 2:
         limpaTela()
-        escolha("MAYWS FICA BEBADO E VAI PARA O TRABALHO,LAVANDO SEU ROSTO E INDO PARA SUA GARAGEM... LIGA SEU CARRO E VAI AO TRABALHO...")
+        print("-" * 60)
+        print(RED + "MAYWS FICA BEBADO E VAI PARA O TRABALHO,LAVANDO SEU ROSTO E INDO PARA SUA GARAGEM... LIGA SEU CARRO E VAI AO TRABALHO..." + RESET)
+        print("-" * 60)
+        carro()
         pressEnter()
         for carro in range(1,100):
             if carro == 1:
-                print("  QUADRA PRINCIPAL")
+                print(YELLOW + "  QUADRA PRINCIPAL")
                 time.sleep(8)
             print("    #    |    #")
             time.sleep(0.1)
@@ -516,7 +605,7 @@ while True:
                 distancia -= 100
                 cont = 0
         tempo(1)
-        print("""
+        print(GREEN + """
                 #############
             ######################   MAYWS DE TÃO BEBADO NÃO PERCEBEU QUE DESVIOU DA PISTA E QUE HÁ UMA AVORE
         ###########################  APENAS A 30M DE DISTÂNCIA E SUA LAMBORGHINI ESTÁ EM 60KM/H... 
@@ -532,17 +621,18 @@ while True:
                 ====#     #====     30 metros!!!!!
         """)
         tempo(5)
-        opcaoGame("DEIXAR BATER...","TENTAR DESVIAR!")
-        repetirNum(5,1)
-        opcaox = str(input("Digite a opção que deseja [A/B]: ")).upper()
+        opcaoGame(CYAN + "DEIXAR BATER...","TENTAR DESVIAR!")
+        repetirNum(3,1)
+        opcaox = str(input(GREEN + "Digite a opção que deseja [A/B]: " + RESET)).upper()
 
         if opcaox == "A":
             limpaTela()
-            escolha("MAYWS BATE O CARRO EM UMA VELOCIDADE ABISMAL CONTRA ARVORE,FAZENDO O MOTOR EXPLODIR E JA INCONCIENTE MORRE...")
+            print("-" * 60)
+            print(RED + "MAYWS BATE O CARRO EM UMA VELOCIDADE ABISMAL CONTRA ARVORE,FAZENDO O MOTOR EXPLODIR E JA INCONCIENTE MORRE..." + RESET)
+            print("-" * 60)
             pressEnter()
             novaLinha()
-            gameOver()
-            tempo(2)
+            tempo(1)
             print("""
 ███████████████████████████
 ███████▀▀▀░░░░░░░▀▀▀███████
@@ -563,16 +653,17 @@ while True:
 ███████▄░░░░░░░░░░░▄███████
 ██████████▄▄▄▄▄▄▄██████████
 ███████████████████████████""")
+            gameOver()
             break
 
         elif opcaox == "B":
             limpaTela()
             escolha("MAYWS DESVIA DA ARVORE A TEMPO E CONSEGUE CHEGAR AO CEMITÉRIO NO HORÁRIO,AS 07:15")
+            cemiterioM()
             pressEnter()
             novaLinha()
             gameOver()
             novaLinha()
-            print("OBRIGADO POR TESTAR A BETA :D!")
             break
 
         else:
@@ -582,23 +673,24 @@ while True:
     break
 pressEnter()
 novaLinha()
+print(MAGENTA)
 print("OBRIGADO POR ACOMPANHAR E TESTAR A FASE BETA DO NOSSO JOGO MARAVILHOSO, A LOUCURA SE APROXIMA!")
-tempo(8)
+tempo(4)
 novaLinha()
 print("CRÉDITOS: ")
 tempo(2)
 novaLinha()
 print("Programador por:   Pedro Henrique")
-tempo(3)
+tempo(2)
 novaLinha()
 print("Design por:     Thiago de Araújo")
-tempo(3)
+tempo(2)
 novaLinha()
 print("Roterizado por:    Thiago & Pedro")
-tempo(3)
+tempo(2)
 novaLinha()
 print("Agradecimentos:  Positivo, Pycharm, VsCode, Python.")
-tempo(3)
+tempo(2)
 novaLinha()
 print("""
 ================================================
