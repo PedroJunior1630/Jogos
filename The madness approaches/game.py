@@ -11,7 +11,7 @@ MAGENTA = '\033[1;95m'
 CYAN = '\033[1;96m'
 
 def limpaTela():
-    os.system('cls')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def linha(vezes,tipo):
     print(tipo * vezes)
@@ -495,7 +495,7 @@ def caronaAceita(opcaocarona):
         pressEnter()
         gameOver()
         return opcaocarona
- 
+
 cont = 0
 distancia = 1000 
 
